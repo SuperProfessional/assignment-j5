@@ -1,12 +1,20 @@
 package com.example.demo.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -55,14 +63,24 @@ public class NhanVien {
   @Column(name = "MatKhau")
   private String matKhau;
 
-  @Column(name = "IdCH")
-  private Integer idCH;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "IdCH", referencedColumnName = "id")
+  @JsonBackReference
+  private CuaHang cuaHang;
 
-  @Column(name = "IdCV")
-  private Integer idCV;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "IdCV", referencedColumnName = "id")
+  @JsonBackReference
+  private ChucVu chucVu;
 
-  @Column(name = "IdGuiBC")
-  private Integer idGuiBC;
+  @OneToMany(mappedBy = "nhanVien", fetch = FetchType.LAZY)
+  @JsonManagedReference
+  private List<NhanVien> nhanViens;
+
+  @ManyToOne
+  @JoinColumn(name = "IdGuiBC", referencedColumnName = "id")
+  @JsonBackReference
+  private NhanVien nhanVien;
 
   @Column(name = "TrangThai")
   private Boolean trangThai;

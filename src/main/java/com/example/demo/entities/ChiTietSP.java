@@ -2,11 +2,16 @@ package com.example.demo.entities;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,17 +33,25 @@ public class ChiTietSP {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @Column(name = "IdSP")
-  private Integer idSP;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "IdSP", referencedColumnName = "id")
+  @JsonBackReference
+  private SanPham sanPham;
 
-  @Column(name = "IdNsx")
-  private Integer idNsx;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "IdNsx", referencedColumnName = "id")
+  @JsonBackReference
+  private NSX nsx;
 
-  @Column(name = "IdMauSac")
-  private Integer idMauSac;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "IdMauSac", referencedColumnName = "id")
+  @JsonBackReference
+  private MauSac mauSac;
 
-  @Column(name = "IdDongSP")
-  private Integer idDongSP;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "IdDongSP", referencedColumnName = "id")
+  @JsonBackReference
+  private DongSP dongSP;
 
   @Column(name = "NamBH")
   private Integer namBH;
