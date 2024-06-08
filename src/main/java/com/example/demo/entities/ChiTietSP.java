@@ -34,22 +34,22 @@ public class ChiTietSP {
   private Integer id;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "IdSP", referencedColumnName = "id")
+  @JoinColumn(name = "IdSP", referencedColumnName = "Id")
   @JsonBackReference
   private SanPham sanPham;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "IdNsx", referencedColumnName = "id")
+  @JoinColumn(name = "IdNsx", referencedColumnName = "Id")
   @JsonBackReference
   private NSX nsx;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "IdMauSac", referencedColumnName = "id")
+  @JoinColumn(name = "IdMauSac", referencedColumnName = "Id")
   @JsonBackReference
   private MauSac mauSac;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "IdDongSP", referencedColumnName = "id")
+  @JoinColumn(name = "IdDongSP", referencedColumnName = "Id")
   @JsonBackReference
   private DongSP dongSP;
 

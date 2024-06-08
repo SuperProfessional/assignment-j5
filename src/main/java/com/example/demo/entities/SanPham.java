@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -32,9 +33,11 @@ public class SanPham {
   private Integer id;
 
   @Column(name = "Ma")
+  @NotBlank(message = "Vui lòng nhập!")
   private String ma;
 
   @Column(name = "Ten")
+  @NotBlank(message = "Vui lòng nhập!")
   private String ten;
 
   @OneToMany(mappedBy = "sanPham", fetch = FetchType.LAZY)

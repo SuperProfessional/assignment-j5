@@ -64,12 +64,12 @@ public class NhanVien {
   private String matKhau;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "IdCH", referencedColumnName = "id")
+  @JoinColumn(name = "IdCH", referencedColumnName = "Id")
   @JsonBackReference
   private CuaHang cuaHang;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "IdCV", referencedColumnName = "id")
+  @JoinColumn(name = "IdCV", referencedColumnName = "Id")
   @JsonBackReference
   private ChucVu chucVu;
 
@@ -78,7 +78,7 @@ public class NhanVien {
   private List<NhanVien> nhanViens;
 
   @ManyToOne
-  @JoinColumn(name = "IdGuiBC", referencedColumnName = "id")
+  @JoinColumn(name = "IdGuiBC", referencedColumnName = "Id")
   @JsonBackReference
   private NhanVien nhanVien;
 
