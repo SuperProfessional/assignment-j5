@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-    <title>Hiển thị chức vụ</title>
+    <title>Hiển thị nhà sản xuất</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,7 +16,7 @@
 
 <body>
 <div class="container">
-    <h2>QUẢN LÝ CHỨC VỤ</h2>
+    <h2>QUẢN LÝ NHÀ SẢN XUẤT</h2>
     <div class="mt-2">
         <table class="table">
             <thead class="thead-light">
@@ -29,27 +29,27 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="cv" items="${chucVuList}" varStatus="var">
+            <c:forEach var="nsx" items="${nsxList}" varStatus="var">
                 <tr>
                     <th scope="row">${var.index + 1}</th>
-                    <td>${cv.id}</td>
-                    <td>${cv.ma}</td>
-                    <td>${cv.ten}</td>
+                    <td>${nsx.id}</td>
+                    <td>${nsx.ma}</td>
+                    <td>${nsx.ten}</td>
                     <td>
                         <button type="button" class="btn btn-primary"><a style="color: white"
-                                                                         href="/chuc-vu/view-update/${cv.id}">Update</a>
+                                                                         href="/nsx/view-update/${nsx.id}">Update</a>
                         </button>
                     </td>
                     <td>
                         <button type="button" class="btn btn-danger"><a style="color: white"
-                                                                        href="/chuc-vu/remove/${cv.id}">Remove</a>
+                                                                        href="/nsx/remove/${nsx.id}">Remove</a>
                         </button>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
-        <button type="button" class="btn btn-success"><a style="color: white" href="/chuc-vu/view-add">Add</a></button>
+        <button type="button" class="btn btn-success"><a style="color: white" href="/nsx/view-add">Add</a></button>
     </div>
 </div>
 <!-- Optional JavaScript -->

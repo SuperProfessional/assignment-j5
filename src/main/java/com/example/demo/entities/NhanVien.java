@@ -1,6 +1,6 @@
 package com.example.demo.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -14,7 +14,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -52,7 +51,7 @@ public class NhanVien {
   private String goiTinh;
 
   @Column(name = "NgaySinh")
-  private LocalDateTime ngaySinh;
+  private LocalDate ngaySinh;
 
   @Column(name = "DiaChi")
   private String diaChi;

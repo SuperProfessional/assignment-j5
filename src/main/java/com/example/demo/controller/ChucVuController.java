@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -32,7 +33,7 @@ public class ChucVuController {
 
   @GetMapping("/hien-thi")
   public String hienThi(Model model) {
-    model.addAttribute("chucVuList", this.chucVuRepository.findAll());
+    model.addAttribute("nsxList", this.chucVuRepository.findAll());
     return this.URI + "/hien-thi";
   }
 
@@ -64,11 +65,11 @@ public class ChucVuController {
     }
     this.chucVuRepository.findById(id)
         .ifPresent(
-            p -> {
-              p.setMa(chucVu.getMa());
-              p.setTen(chucVu.getTen());
+            o -> {
+              o.setMa(chucVu.getMa());
+              o.setTen(chucVu.getTen());
 
-              this.chucVuRepository.save(p);
+              this.chucVuRepository.save(o);
             }
         );
     return "redirect:" + this.URI + "/hien-thi";
@@ -102,7 +103,14 @@ public class ChucVuController {
             )
         );
 
-    if (this.chucVuRepository.checkExistMa(chucVu.getId(), chucVu.getMa()) > 0) {
+    if (
+        this.chucVuRepository.checkExistMa(
+            Objects.nonNull(chucVu.getId())
+                ? chucVu.getId()
+                : 0,
+            chucVu.getMa()
+        ) > 0
+    ) {
       rerult.merge(
           "ma",
           List.of("Mã đã tồi tại"),

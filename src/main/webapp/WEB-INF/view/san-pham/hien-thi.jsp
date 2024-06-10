@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-    <title>Hiển thị chức vụ</title>
+    <title>Hiển thị sản phẩm</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,7 +16,7 @@
 
 <body>
 <div class="container">
-    <h2>QUẢN LÝ CHỨC VỤ</h2>
+    <h2>QUẢN LÝ SẢN PHẨM</h2>
     <div class="mt-2">
         <table class="table">
             <thead class="thead-light">
@@ -25,31 +25,49 @@
                 <th scope="col">ID</th>
                 <th scope="col">Mã</th>
                 <th scope="col">Tên</th>
-                <th colspan="2">Action</th>
+                <th colspan="3">Action</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="cv" items="${chucVuList}" varStatus="var">
+            <c:forEach var="sp" items="${sanPhamPage.content}" varStatus="var">
                 <tr>
                     <th scope="row">${var.index + 1}</th>
-                    <td>${cv.id}</td>
-                    <td>${cv.ma}</td>
-                    <td>${cv.ten}</td>
+                    <td>${sp.id}</td>
+                    <td>${sp.ma}</td>
+                    <td>${sp.ten}</td>
                     <td>
                         <button type="button" class="btn btn-primary"><a style="color: white"
-                                                                         href="/chuc-vu/view-update/${cv.id}">Update</a>
+                                                                         href="/san-pham/view-update/${sp.id}">Update</a>
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-info"><a style="color: white"
+                                                                         href="/chi-tiet-sp/hien-thi/${sp.id}">Chi tiết</a>
                         </button>
                     </td>
                     <td>
                         <button type="button" class="btn btn-danger"><a style="color: white"
-                                                                        href="/chuc-vu/remove/${cv.id}">Remove</a>
+                                                                        href="/san-pham/remove/${sp.id}">Remove</a>
                         </button>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
-        <button type="button" class="btn btn-success"><a style="color: white" href="/chuc-vu/view-add">Add</a></button>
+        <div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="/san-pham/hien-thi?pageNumber=${sanPhamPage.first ? sanPhamPage.totalPages : sanPhamPage.number}">Previous</a>
+                    </li>
+                    <c:forEach var="i" begin="1" end="${sanPhamPage.totalPages}">
+                        <li class="page-item"><a class="page-link" href="/san-pham/hien-thi?pageNumber=${i}">${i}</a></li>
+                    </c:forEach>
+                    <li class="page-item"><a class="page-link" href="/san-pham/hien-thi?pageNumber=${sanPhamPage.last ? 1 : sanPhamPage.number + 2}">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <button type="button" class="btn btn-success"><a style="color: white" href="/san-pham/view-add">Add</a></button>
     </div>
 </div>
 <!-- Optional JavaScript -->

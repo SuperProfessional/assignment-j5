@@ -1,72 +1,56 @@
-package com.example.demo.entities;
+package com.example.demo.model;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "KhachHang")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class KhachHang {
+public class KhachHangModel {
 
-  @Id
-  @Column(name = "Id")
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @Column(name = "Ma")
   @NotBlank(message = "Vui lòng nhập!")
   private String ma;
 
-  @Column(name = "Ten")
   @NotBlank(message = "Vui lòng nhập!")
   private String ten;
 
-  @Column(name = "TenDem")
   @NotBlank(message = "Vui lòng nhập!")
   private String tenDem;
 
-  @Column(name = "Ho")
   @NotBlank(message = "Vui lòng nhập!")
   private String ho;
 
-  @Column(name = "NgaySinh")
   @NotNull(message = "Vui lòng nhập!")
   private LocalDate ngaySinh;
 
-  @Column(name = "Sdt")
   @NotBlank(message = "Vui lòng nhập!")
+  @Pattern(regexp = "^(0[0-9]{9})|(0[0-9]{10})$", message = "Số điện thoại không hợp lệ!")
   private String sdt;
 
-  @Column(name = "DiaChi")
   @NotBlank(message = "Vui lòng nhập!")
   private String diaChi;
 
-  @Column(name = "ThanhPho")
   @NotBlank(message = "Vui lòng nhập!")
   private String thanhPho;
 
-  @Column(name = "QuocGia")
   @NotBlank(message = "Vui lòng nhập!")
   private String quocGia;
 
-  @Column(name = "MatKhau")
   @NotBlank(message = "Vui lòng nhập!")
   private String matKhau;
+
+  @NotBlank(message = "Vui lòng nhập!")
+  private String confirmMatKhau;
 }
